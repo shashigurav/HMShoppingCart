@@ -76,6 +76,35 @@ public class ShoppingCartImpl implements ShoppingCart{
         This is checkout with Discount Method .
      */
     public BigDecimal checkOutDiscount() {
-        return null;
+
+        Iterator<Item> itemIterator = itemCart.values().iterator();
+
+        while (itemIterator.hasNext()){
+            Item item = itemIterator.next();
+            /*
+                Apple are buy one get one free so div by 2
+             */
+            if("Apple".equalsIgnoreCase(item.getFruitName()))
+                if (item.getQuantity()>1) {
+                    BigDecimal billingQty = new BigDecimal(item.getQuantity() - item.getQuantity() /2 );
+                    finalBill = finalBill.add(billingQty.multiply(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
+                }
+                else{
+                    finalBill = finalBill.add(new BigDecimal(item.getQuantity()).multiply(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
+                }
+                /*
+                    Orange are buy 3 pay for 2 is discount so div /3
+                 */
+            else if("Orange".equalsIgnoreCase(item.getFruitName()))
+                if (item.getQuantity()>2){
+                    BigDecimal billingQty = new BigDecimal(item.getQuantity() - item.getQuantity() /3 );
+                    finalBill = finalBill.add((billingQty.multiply(item.getPrice()).setScale(2, RoundingMode.HALF_UP)));
+                }else{
+                    finalBill = finalBill.add(new BigDecimal(item.getQuantity()).multiply(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
+                }
+
+        }
+        return finalBill;
+
     }
 }
