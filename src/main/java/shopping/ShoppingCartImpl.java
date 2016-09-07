@@ -62,6 +62,13 @@ public class ShoppingCartImpl implements ShoppingCart{
         This method will be called once use check from cart
      */
     public BigDecimal checkOut() {
-        return null;
+
+        Iterator<Item> itemIterator = itemCart.values().iterator();
+        while (itemIterator.hasNext()){
+            Item item = itemIterator.next();
+            finalBill = finalBill.add(new BigDecimal(item.getQuantity()).multiply(item.getPrice()));
+        }
+
+        return finalBill ;
     }
 }
