@@ -11,6 +11,12 @@ public class Item {
     private int quantity ;
     private BigDecimal price ;
 
+    public Item(String fruitName, int quantity, BigDecimal price) {
+        this.fruitName = fruitName;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     public String getFruitName() {
         return fruitName;
     }
