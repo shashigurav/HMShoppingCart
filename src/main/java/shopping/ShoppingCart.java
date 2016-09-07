@@ -14,4 +14,6 @@ public interface ShoppingCart {
     public int checkItem();
 
     public BigDecimal checkOut();
+
+    public BigDecimal checkOutDiscount();
 }

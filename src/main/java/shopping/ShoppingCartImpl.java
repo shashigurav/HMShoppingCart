@@ -72,4 +72,10 @@ public class ShoppingCartImpl implements ShoppingCart{
 
         return finalBill ;
     }
+    /*
+        This is checkout with Discount Method .
+     */
+    public BigDecimal checkOutDiscount() {
+        return null;
+    }
 }
