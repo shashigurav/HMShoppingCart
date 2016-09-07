@@ -30,6 +30,19 @@ public class ShoppingCartImpl implements ShoppingCart{
      */
     public void addItems(List<Item> itemList) {
 
+        Iterator<Item> itemIterator = itemList.iterator();
+        while (itemIterator.hasNext()){
+            Item item = itemIterator.next();
+            if (!itemCart.containsKey(item.getFruitName())){
+                itemCart.put(item.getFruitName(),item);
+            }else {
+                Item exitingItem = itemCart.get(item.getFruitName());
+                exitingItem.setQuantity(exitingItem.getQuantity()+item.getQuantity());
+                itemCart.put(exitingItem.getFruitName(),exitingItem);
+            }
+
+        }
+
     }
 /*
     Check the number if Items in the cart

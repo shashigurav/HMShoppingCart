@@ -35,7 +35,17 @@ public class ShoppingCartTest {
         List<Item> items= new ArrayList<Item>();
         items.add(new Item("Apple",1,APPLE_PRICE));
         shoppingCart.addItems(items);
-        assertEquals(1,shoppingCart.checkItem());
+        assertEquals(shoppingCart.checkItem(),1);
+
+    }
+
+    @Test
+    public void testAddShoopingItems(){
+        List<Item> items= new ArrayList<Item>();
+        items.add(new Item("Orange",1,ORANGE_PRICE));
+        items.add(new Item("Apple",1,APPLE_PRICE));
+        shoppingCart.addItems(items);
+        assertEquals(shoppingCart.checkItem(),2);
 
     }
 }
