@@ -5,6 +5,7 @@ import shopping.ShoppingCart;
 import shopping.ShoppingCartImpl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,19 @@ public class ShoppingCartTest {
         items.add(new Item("Apple",1,APPLE_PRICE));
         shoppingCart.addItems(items);
         assertEquals(shoppingCart.checkItem(),2);
+
+    }
+
+    @Test
+    public void testCheckout(){
+        List<Item> items= new ArrayList<Item>();
+        items.add(new Item("Orange",1,ORANGE_PRICE));
+        items.add(new Item("Apple",1,APPLE_PRICE));
+        items.add(new Item("Apple",1,APPLE_PRICE));
+        items.add(new Item("Apple",1,APPLE_PRICE));
+        shoppingCart.addItems(items);
+        assertEquals(shoppingCart.checkItem(),4);
+        assertEquals(shoppingCart.checkOut(),2.05);
 
     }
 }

@@ -57,4 +57,11 @@ public class ShoppingCartImpl implements ShoppingCart{
 
         return count;
     }
+
+    /*
+        This method will be called once use check from cart
+     */
+    public BigDecimal checkOut() {
+        return null;
+    }
 }

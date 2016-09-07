@@ -2,6 +2,7 @@ package shopping;
 
 import item.Item;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -11,4 +12,6 @@ public interface ShoppingCart {
 
     public void addItems(List<Item> itemList);
     public int checkItem();
+
+    public BigDecimal checkOut();
 }
