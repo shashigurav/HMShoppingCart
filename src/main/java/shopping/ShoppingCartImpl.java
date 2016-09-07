@@ -4,6 +4,7 @@ import item.Item;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -66,7 +67,7 @@ public class ShoppingCartImpl implements ShoppingCart{
         Iterator<Item> itemIterator = itemCart.values().iterator();
         while (itemIterator.hasNext()){
             Item item = itemIterator.next();
-            finalBill = finalBill.add(new BigDecimal(item.getQuantity()).multiply(item.getPrice()));
+            finalBill = finalBill.add(new BigDecimal(item.getQuantity()).multiply(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
         }
 
         return finalBill ;

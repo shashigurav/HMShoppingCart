@@ -28,7 +28,7 @@ public class ShoppingCartTest {
     }
     @Test
     public void checkShoppingCartEmpty(){
-        assertEquals(shoppingCart.checkItem(),0);
+        assertEquals(0,shoppingCart.checkItem());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ShoppingCartTest {
         List<Item> items= new ArrayList<Item>();
         items.add(new Item("Apple",1,APPLE_PRICE));
         shoppingCart.addItems(items);
-        assertEquals(shoppingCart.checkItem(),1);
+        assertEquals(1,shoppingCart.checkItem());
 
     }
 
@@ -46,7 +46,7 @@ public class ShoppingCartTest {
         items.add(new Item("Orange",1,ORANGE_PRICE));
         items.add(new Item("Apple",1,APPLE_PRICE));
         shoppingCart.addItems(items);
-        assertEquals(shoppingCart.checkItem(),2);
+        assertEquals(2,shoppingCart.checkItem());
 
     }
 
@@ -58,8 +58,8 @@ public class ShoppingCartTest {
         items.add(new Item("Apple",1,APPLE_PRICE));
         items.add(new Item("Apple",1,APPLE_PRICE));
         shoppingCart.addItems(items);
-        assertEquals(shoppingCart.checkItem(),4);
-        assertEquals(shoppingCart.checkOut(),2.05);
+        assertEquals(4,shoppingCart.checkItem());
+        assertEquals(new BigDecimal(2.05).setScale(2, RoundingMode.HALF_UP),shoppingCart.checkOut());
 
     }
 }
